@@ -6,12 +6,14 @@ import Login from "./components/login/Login";
 import { ToastContainer } from "react-toastify";
 import History from "./components/history/History";
 import Buyrutmalar from "./components/buyrutmalar/Buyrutmalar";
+import Register from "./components/register/Register";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="/" element={
           <PrivateRoute>
             <Layout />
