@@ -32,8 +32,9 @@ const Sidebar = ({ children }) => {
         },
         {
             path: "/history",
-            name: "Buyrutmalar tarixi",
-        },       
+            name: "Buyurtmalar tarixi",
+        },   
+            
 
     ]
     return (

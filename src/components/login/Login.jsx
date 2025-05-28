@@ -9,13 +9,14 @@ const Login = () => {
   const [login, setLogin] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
+  const [role, setRole] = useState("")
 
 
 
   const loginSubmit =(event)=>{
 
     event.preventDefault()
-    fetch("http://45.154.2.116:7010/api/auth/login", {
+    fetch("https://u-dev.uz/api/auth/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -29,13 +30,35 @@ const Login = () => {
     .then((item)=> {
       if(item?.token){
         localStorage.setItem("token", item?.token)
-        toast.success("Login Successfull")
-        navigate("/buyrutmalar")
+        getMyInfo().then((item)=> {
+          setRole(item?.role)
+          if (item?.role === "USER") {
+            toast.success("Login Successful");
+            navigate("/buyrutmalar");
+          } else {
+            toast.warning("Siz Foydalanuvchi emassiz");
+            navigate("/");
+          }
+        })
       } else{
         toast.error("Login Failed")
       }
     })
   }
+
+  const getMyInfo = () => {
+    return fetch("https://u-dev.uz/api/profile", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        return data; 
+      });
+  };
 
   return (
     <>

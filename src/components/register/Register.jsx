@@ -14,7 +14,7 @@ const Register = () => {
     const registerSubmit = (e) => {
         e.preventDefault();
       
-        fetch("http://45.154.2.116:7010/api/auth/signup", {
+        fetch("https://u-dev.uz/api/auth/signup", {
           method: "POST",
           headers: {
             "Content-type": "application/json",

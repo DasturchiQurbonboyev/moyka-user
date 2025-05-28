@@ -8,7 +8,7 @@ const History = () => {
   
   const getBuyrutmaLar = () => {
   
-    fetch("http://45.154.2.116:7010/api/bookings/booking/his", {
+    fetch("https://u-dev.uz/api/bookings/booking/his", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

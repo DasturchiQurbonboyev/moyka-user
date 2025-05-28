@@ -92,7 +92,7 @@ const Buyrutmalar = () => {
   }
 
   const getBuyrutmaLar = () => {
-    fetch("http://45.154.2.116:7010/api/bookings/booking", {
+    fetch("https://u-dev.uz/api/bookings/booking", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -107,7 +107,7 @@ const Buyrutmalar = () => {
   };
 
   const getTarifData = () => {
-    fetch("http://45.154.2.116:7010/api/users/tariffs", {
+    fetch("https://u-dev.uz/api/users/tariffs", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -121,7 +121,7 @@ const Buyrutmalar = () => {
   };
 
   const getBoxData = () => {
-    fetch("http://45.154.2.116:7010/api/users/boxes", {
+    fetch("https://u-dev.uz/api/users/boxes", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -139,7 +139,7 @@ const Buyrutmalar = () => {
 
     try {
       const response = await fetch(
-        "http://45.154.2.116:7010/api/users/booking",
+        "https://u-dev.uz/api/users/booking",
         {
           method: "POST",
           headers: {
@@ -183,7 +183,7 @@ const Buyrutmalar = () => {
   const editBuyrutma = async (id) => {
     try {
       const response = await fetch(
-        `http://45.154.2.116:7010/api/users/booking/${id}/status`,
+        `https://u-dev.uz/api/users/booking/${id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -249,11 +249,13 @@ const Buyrutmalar = () => {
                 Box nomi
               </label>
               <select
+              required
                 value={boxId}
                 onChange={(e) => setBoxId(e.target.value)}
                 style={{ padding: "8px 10px" }}
                 className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[5px] focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
+                <option value="" disabled hidden>Tanlang...</option>
                 {boxData?.map((item, index) => (
                   <option value={item?.id}>{item?.name}</option>
                 ))}
@@ -265,11 +267,13 @@ const Buyrutmalar = () => {
                 Tarif
               </label>
               <select
+              required
                 value={tarifId}
                 onChange={(e) => setTarifId(e.target.value)}
                 style={{ padding: "8px 10px" }}
                 className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[5px] focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
+                <option value="" disabled hidden>Tanlang...</option>
                 {tarifData?.map((item, index) => (
                   <option value={+item?.id}>{item?.name}</option>
                 ))}
@@ -282,6 +286,7 @@ const Buyrutmalar = () => {
               </label>
               <div>
                 <input
+                required
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
                   type="date"
@@ -298,11 +303,13 @@ const Buyrutmalar = () => {
                 Vaqti
               </label>
               <select
+              required
                 value={bookingTime}
                 onChange={(e) => setBookingTime(e.target.value)}
                 style={{ padding: "8px 10px" }}
                 className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[5px] focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
+                <option value="" disabled hidden>Tanlang...</option>
                 {availableTimes?.map((item, index) => (
                   <option value={item}>{item}</option>
                 ))}
@@ -349,14 +356,14 @@ const Buyrutmalar = () => {
             }}
             className="px-5 py-2.5 cursor-pointer me-2 mb-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            Buyrutma qo'shish
+            Buyurtma qo'shish
           </button>
         </div>
         {buyrutmalarData.length === 0 ? (
           <h1
             className="text-center text-3xl font-bold leading-[75vh]"
           >
-            Buyrutmalar mavjud emas!!!
+            Buyurtmalar mavjud emas!!!
           </h1>
         ) : (
           <table className="w-full text-left table-auto min-w-max">
@@ -455,7 +462,7 @@ const Buyrutmalar = () => {
                       type="button"
                       className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                     >
-                    Buyrutmani bekor qilish
+                    Buyurtmani bekor qilish
                       
                     </button>
                   </td>
