@@ -51,7 +51,7 @@
     z-index: 2;
     padding: 40px;
     border-radius: 20px;
-    /* background-image: url('../../assets/image.png'); */
+    background-color: rgba(56, 55, 55, 0.6);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
